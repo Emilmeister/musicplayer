@@ -20,6 +20,8 @@ public class MusicListView extends JPanel {
 
     @Autowired(required = false)
     private PlayerController playerController;
+    @Autowired(required = false)
+    private MusicListController musicListController;
     private DefaultListModel<String> model = new DefaultListModel<>();
     private JList jList =  new JList(model);
     private String rootPath = "";
@@ -34,8 +36,7 @@ public class MusicListView extends JPanel {
             try{
                 if (!e.getValueIsAdjusting()) {
                     int ind = ((JList) e.getSource()).getSelectedIndex();
-                    String songPath = rootPath + model.get(ind);
-                    playerController.changeSong(songPath);
+                    musicListController.changeSong(ind);
                 }
             } catch (Exception exception) {
                 exception.printStackTrace();
@@ -54,22 +55,21 @@ public class MusicListView extends JPanel {
 
     public MusicListView() {
         setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
+        setLayout(new FlowLayout(FlowLayout.CENTER));
 
         jList.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
         jList.addListSelectionListener(listSelectionListener);
-        jList.setSize(Size.APP_WIDTH, Size.APP_HEIGHT*2/3);
-
         jList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
         JScrollPane scrollPane = new JScrollPane(jList);
         scrollPane.createVerticalScrollBar();
         scrollPane.setVisible(true);
-        scrollPane.setSize(Size.APP_WIDTH, Size.APP_HEIGHT*2/3);
-
         add(scrollPane);
         setVisible(true);
+        scrollPane.setPreferredSize(new Dimension(Size.APP_WIDTH*95/100, Size.APP_HEIGHT*2/3));
     }
 
-
-
+    public JList getjList() {
+        return jList;
+    }
 }

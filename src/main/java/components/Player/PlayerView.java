@@ -17,9 +17,11 @@ public class PlayerView extends JPanel {
     @Autowired(required = false)
     private PlayerController playerController;
     private JSlider slider = new JSlider(0,100, 100);
-    private JToggleButton playPauseButton = new JToggleButton("▶");
+    private JButton playPauseButton = new JButton("▶");
     private JLabel songName = new JLabel();
     private JProgressBar rewinder = new JProgressBar();
+    private JButton plusPosition = new JButton("Plus");
+    private JButton minusPosition = new JButton("Minus");
 
 
 
@@ -28,7 +30,7 @@ public class PlayerView extends JPanel {
     }
 
 
-    void initSlider(){
+    void init(){
         ChangeListener changeListener = new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
@@ -37,11 +39,6 @@ public class PlayerView extends JPanel {
         };
         slider.addChangeListener(changeListener);
         slider.setSize(Size.APP_WIDTH/20, Size.APP_HEIGHT/50);
-    }
-
-
-    public PlayerView(){
-        initSlider();
         ActionListener playpause = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -52,11 +49,36 @@ public class PlayerView extends JPanel {
             }
         };
         playPauseButton.addActionListener(playpause);
+        ActionListener plusPositionListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                playerController.plusTrackPosition();
+            }
+        };
+        plusPosition.addActionListener(plusPositionListener);
+        ActionListener minusPositionListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                playerController.minusTrackPosition();
+            }
+        };
+        minusPosition.addActionListener(minusPositionListener);
+
+        slider.setPreferredSize(new Dimension(100, 20));
+        rewinder.setPreferredSize(new Dimension(350, 20));
+    }
+
+
+    public PlayerView(){
+        init();
+
         setLayout(new FlowLayout(FlowLayout.LEFT));
         add(songName);
         add(slider);
         add(rewinder);
         add(playPauseButton);
+        add(minusPosition);
+        add(plusPosition);
         setVisible(true);
     }
 
@@ -65,39 +87,11 @@ public class PlayerView extends JPanel {
         return rewinder;
     }
 
-    public void setRewinder(JProgressBar rewinder) {
-        this.rewinder = rewinder;
-    }
-
-    public PlayerController getPlayerController() {
-        return playerController;
-    }
-
-    public void setPlayerController(PlayerController playerController) {
-        this.playerController = playerController;
-    }
-
-    public JSlider getSlider() {
-        return slider;
-    }
-
-    public void setSlider(JSlider slider) {
-        this.slider = slider;
-    }
-
-    public JToggleButton getPlayPauseButton() {
-        return playPauseButton;
-    }
-
-    public void setPlayPauseButton(JToggleButton playPauseButton) {
-        this.playPauseButton = playPauseButton;
-    }
-
     public JLabel getSongName() {
         return songName;
     }
 
-    public void setSongName(JLabel songName) {
-        this.songName = songName;
+    public JSlider getSlider() {
+        return slider;
     }
 }

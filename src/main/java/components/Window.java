@@ -25,7 +25,6 @@ public class Window extends JFrame {
     JButton newChangeDirectoryButton(){
         JButton button = new JButton("Изменить директорию");
         button.addActionListener(e -> filePickerView.setVisible(true));
-        System.out.println("sdfasdf");
         return button;
     }
 
