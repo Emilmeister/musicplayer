@@ -5,10 +5,7 @@ import javax.swing.border.BevelBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.List;
-import java.util.logging.Logger;
 
 import components.Player.PlayerController;
 import constant.Size;
@@ -54,7 +51,6 @@ public class MusicListView extends JPanel {
     }
 
     public MusicListView() {
-        setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
         setLayout(new FlowLayout(FlowLayout.CENTER));
 
         jList.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
