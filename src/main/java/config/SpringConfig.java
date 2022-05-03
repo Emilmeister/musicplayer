@@ -6,14 +6,9 @@ import components.MusicList.MusicListController;
 import components.MusicList.MusicListView;
 import components.Player.PlayerController;
 import components.Player.PlayerView;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 
-/**
- * @author Neil Alishev
- */
 @Configuration
 public class SpringConfig {
     @Bean
