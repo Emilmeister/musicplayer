@@ -88,9 +88,6 @@ public class PlayerController {
 
     }
 
-    public boolean isRunning() {
-        return clip.isRunning();
-    }
 
     public void plusTrackPosition() {
         long MAX = clip.getMicrosecondLength() - 1;
