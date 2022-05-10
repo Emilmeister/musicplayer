@@ -1,6 +1,6 @@
 package config;
 
-import FilePicker.FilePickerView;
+import components.FilePicker.FilePickerView;
 import components.Window;
 import components.MusicList.MusicListController;
 import components.MusicList.MusicListView;

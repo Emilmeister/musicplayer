@@ -1,4 +1,4 @@
-package FilePicker;
+package components.FilePicker;
 
 import components.MusicList.MusicListController;
 import org.springframework.beans.factory.annotation.Autowired;
