@@ -7,7 +7,6 @@ import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.util.List;
 
-import components.Player.PlayerController;
 import constant.Size;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -15,8 +14,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class MusicListView extends JPanel {
 
-    @Autowired(required = false)
-    private PlayerController playerController;
     @Autowired(required = false)
     private MusicListController musicListController;
     private DefaultListModel<String> model = new DefaultListModel<>();
